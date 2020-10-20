@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import telebot
-# 1391358816:AAFCQLtieoSlxYmdNdOFZ4eIhEGWKoju3T4
+
 import telebot
 
 bot = telebot.TeleBot('вставить свой токен')
