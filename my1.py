@@ -3,7 +3,7 @@ import telebot
 # 1391358816:AAFCQLtieoSlxYmdNdOFZ4eIhEGWKoju3T4
 import telebot
 
-bot = telebot.TeleBot('1391358816:AAFCQLtieoSlxYmdNdOFZ4eIhEGWKoju3T4')
+bot = telebot.TeleBot('вставить свой токен')
 sum_credit = 0
 
 phone_num = {'89167345200':'Уважаемая Екатерина Юрьевна!', '89288167447': 'Уважаемый Денис Олегович!','89262682738': 'Уважаемый Фариз Фазилевич!'}
