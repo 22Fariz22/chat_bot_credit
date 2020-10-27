@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 import telebot
-# 1391358816:AAFCQLtieoSlxYmdNdOFZ4eIhEGWKoju3T4
-import telebot
 from json_write_function import write_json
 
 
