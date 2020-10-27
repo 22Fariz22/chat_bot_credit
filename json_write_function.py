@@ -21,5 +21,5 @@ def write_json(person_dict):
     #     json.dump(data, file, indent=2, ensure_ascii=False)
     # with open('person_dict.json', 'a', encoding='utf-8') as file:
     #     json.dump(person_dict, file, ensure_ascii=False)
-
+    data = []
 
