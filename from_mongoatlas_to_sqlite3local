@@ -1,0 +1,42 @@
+# -*- coding: utf-8 -*-
+import pymongo
+import sqlite3
+# далее код для Монго
+cluster = pymongo.MongoClient('mongodb://<LOGIN>:<PAROL>@cluster0-shard-00-00.l1f8y.mongodb.net:27017,cluster0-shard-00-01.l1f8y.mongodb.net:27017,cluster0-shard-00-02.l1f8y.mongodb.net:27017/vd_db?tls=true&replicaSet=atlas-5ltqw8-shard-0&authSource=admin&retryWrites=true&w=majority')
+
+vd_db = cluster['vd_db']
+mycol = vd_db['vd_telegram_bot']
+telegram_bot = mycol
+
+client_name = ''
+client_phone = ''
+id = ''
+credit = '' #добавил
+
+# далее код для sqlite
+db = sqlite3.connect("data_from_mongo.db")
+sql = db.cursor()
+
+sql.execute("""CREATE TABLE IF NOT EXISTS clients (
+    client_name TEXT,
+    client_phone TEXT, 
+    id TEXT,
+    credit TEXT
+)""")
+db.commit()
+
+for i in telegram_bot.find():
+    client_name = i['name']
+    client_phone = i['phone_number']
+    money = i['credit']
+    id = i['_id']
+    sql.execute(f'SELECT id FROM clients WHERE id = "{id}" ')
+    if sql.fetchone() is None:
+        sql.execute(f"INSERT INTO clients VALUES ('{client_name}','{client_phone}','{money}','{id}')")
+        db.commit()
+    # else:
+    #     print('Такая запись уже имеется')
+
+[print(value) for value in sql.execute('SELECT * FROM clients')]
+
+
